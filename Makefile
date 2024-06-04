@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS =
+SRCS = push_swap.c
 
 LIBFT	= -Llibft -lft
 
@@ -13,7 +13,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME):: $(OBJS)
-	${AR} ${NAME} ${OBJS}
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -26,4 +26,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean  fclean re
