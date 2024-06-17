@@ -1,0 +1,9 @@
+*.o*
+*.swp*
+main.c
+libftTester
+.idea
+*.a
+.vscode
+*.out
+push_swap

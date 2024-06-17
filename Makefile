@@ -10,17 +10,20 @@ LIBFT = -Llibft -lft
 
 OBJS = $(SRCS:.c=.o)
 
+all: submodules libft $(NAME)
+
 submodules:
 	if [ -z "$(shell ls -A libft)" ]; then \
 		echo "libft submodule not initialized, initializing..."; \
 		git submodule init && git submodule update --recursive; \
 	fi
-	if [ -z "$(shell ls -A libft/ft_printf)" ]; then \
+	if [ -z "$(shell ls -A libft/ft_printf)" -o -z "$(shell ls -A libft/get_next_line)" ]; then \
 		echo "libft submodule not initialized, initializing..."; \
 		cd libft && git submodule init && git submodule update --recursive; \
 	fi
 
-all: submodules $(NAME)
+libft:
+	$(MAKE) -C libft
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
@@ -30,10 +33,12 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C libft fclean
 
 re: fclean all
 
-.PHONY: all clean  fclean re
+.PHONY: all clean  fclean re submodules libft
