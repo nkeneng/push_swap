@@ -7,3 +7,4 @@ libftTester
 .vscode
 *.out
 push_swap
+/push_swap.dSYM/

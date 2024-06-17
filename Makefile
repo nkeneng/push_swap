@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRCS = push_swap.c
 
@@ -11,6 +11,9 @@ LIBFT = -Llibft -lft
 OBJS = $(SRCS:.c=.o)
 
 all: submodules libft $(NAME)
+
+run: all
+	./$(NAME)
 
 submodules:
 	if [ -z "$(shell ls -A libft)" ]; then \
