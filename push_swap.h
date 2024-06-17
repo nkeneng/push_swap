@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snkeneng <snkeneng@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 11:27:23 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/06/06 11:45:59 by snkeneng         ###   ########.fr       */
+/*   Created: 2024/06/06 11:43:08 by snkeneng          #+#    #+#             */
+/*   Updated: 2024/06/06 11:45:40 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(void)
-{
-	ft_printf("Hello, World!\n");
-	return (0);
-}
+# include <stdio.h>
+# include "libft/lib_ft/libft.h"
+# include "libft/get_next_line/get_next_line.h"
+# include "libft/ft_printf/ft_printf.h"
+
+#endif

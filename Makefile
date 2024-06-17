@@ -6,13 +6,23 @@ CFLAGS = -Wall -Werror -Wextra
 
 SRCS = push_swap.c
 
-LIBFT	= -Llibft -lft
+LIBFT = -Llibft -lft
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
+submodules:
+	if [ -z "$(shell ls -A libft)" ]; then \
+		echo "libft submodule not initialized, initializing..."; \
+		git submodule init && git submodule update --recursive; \
+	fi
+	if [ -z "$(shell ls -A libft/ft_printf)" ]; then \
+		echo "libft submodule not initialized, initializing..."; \
+		cd libft && git submodule init && git submodule update --recursive; \
+	fi
 
-$(NAME):: $(OBJS)
+all: submodules $(NAME)
+
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 %.o: %.c
