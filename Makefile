@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRCS = push_swap.c
+SRCS = push_swap.c stack.c ops.c sort.c midpoint_algo.c free.c flip_a.c flip_b.c utilities.c
 
 LIBFT = -Llibft -lft
 
@@ -13,7 +13,7 @@ OBJS = $(SRCS:.c=.o)
 all: submodules libft $(NAME)
 
 run: all
-	./$(NAME)
+	./$(NAME) 2 3 5 12 10 6 9 7 4 1 8 11
 
 submodules:
 	if [ -z "$(shell ls -A libft)" ]; then \
