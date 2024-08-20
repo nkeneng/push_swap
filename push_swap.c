@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:59 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/07/01 13:56:43 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:22:56 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_zeros(char *str)
 {
-	unsigned int		i;
+	unsigned int	i;
 
 	i = ft_strlen(str);
 	if (!ft_isempty(str) && ft_strncmp(str, "0", i) == 0)
@@ -37,11 +37,20 @@ void	push_swap(t_node **a, int *sorted_list)
 	else if (find_len(*a) == 3)
 		sort_three(a);
 	else if (find_len(*a) > 3)
-	{
 		midpoint_sorting(a, &b, sorted_list);
-		printf("OK\n");
-	}
 	return ;
+}
+
+void	print_linked_list(t_node *head)
+{
+	t_node	*current;
+
+	current = head;
+	while (current != NULL)
+	{
+		ft_printf("%d\n", current->data);
+		current = current->next;
+	}
 }
 
 int	main(int ac, char **av)
@@ -49,7 +58,7 @@ int	main(int ac, char **av)
 	int		i;
 	int		is_zeros;
 	t_node	*a;
-	int			*sorted_list;
+	int		*sorted_list;
 
 	i = 1;
 	a = NULL;
@@ -68,7 +77,6 @@ int	main(int ac, char **av)
 		create_stack(av, &a, ac);
 		sorted_list = add_sorting_index(&a, find_len(a));
 		push_swap(&a, sorted_list);
-		// print linked list
 		print_linked_list(a);
 		ft_printf("OK\n");
 	}

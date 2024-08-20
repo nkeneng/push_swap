@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:26:49 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/06/28 13:25:35 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:19:47 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	swap(t_node *stack, char *str)
 	stack->s_index = stack->next->s_index;
 	stack->next->s_index = index_temp;
 	ft_printf(str, 1);
+	ft_printf("\n", 1);
 }
 
 void	rotate(t_node **stack, char *str, int cost)
@@ -39,6 +40,7 @@ void	rotate(t_node **stack, char *str, int cost)
 		temp->next = NULL;
 		ft_lstlast_ps(*stack)->next = temp;
 		ft_printf(str, 1);
+		ft_printf("\n", 1);
 		cost--;
 	}
 }
@@ -61,6 +63,7 @@ void	reverse_rotate(t_node **stack, char *str, int cost)
 		temp->next = NULL;
 		last = temp;
 		ft_printf(str, 1);
+		ft_printf("\n", 1);
 		cost++;
 	}
 }
