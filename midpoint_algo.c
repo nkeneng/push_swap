@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:05:56 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/20 16:21:56 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:39:23 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -70,7 +70,7 @@ void	midpoint_sorting(t_node **a, t_node **b, int *sorted_list)
 	if (size <= 2)
 	{
 		if (!stack_is_sorted(*a))
-			swap(*a, "sa"); // sort two last elements in a
+			swap(*a, "sa");
 		return ;
 	}
 	send_to_b(a, b, size);

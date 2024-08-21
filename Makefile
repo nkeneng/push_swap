@@ -12,6 +12,9 @@ OBJS = $(SRCS:.c=.o)
 
 all: submodules libft $(NAME)
 
+check-sort:
+	cc test/main.c -o check.out && ./check.out
+
 run: all
 	./$(NAME) 2 3 5 12 10 6 9 7 4 1 8 11
 

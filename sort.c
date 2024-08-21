@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:03:01 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/06/19 16:03:04 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:37:55 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sort_three(t_node **stack)
 {
-	int	first;
+	int first;
 	int	second;
 	int	third;
 
@@ -25,12 +25,12 @@ void	sort_three(t_node **stack)
 		return ;
 	else if ((first < second) && (first < third)) // 1 3 2
 	{
-		swap(*stack, "sa"); // 3 1 2
+		swap(*stack, "sa");     // 3 1 2
 		rotate(stack, "ra", 1); // 1 2 3
 	}
 	else if ((first > second) && (first < third) && (second < third)) // 2 1 3
-		swap(*stack, "sa"); // 1 2 3
-	else if ((first < second) && (first > third)) // 2 3 1
+		swap(*stack, "sa");                                           // 1 2 3
+	else if ((first < second) && (first > third))                     // 2 3 1
 		reverse_rotate(stack, "rra", -1);
 	else if ((first > second) && (first > third) && (second < third)) // 3 1 2
 		rotate(stack, "ra", 1);

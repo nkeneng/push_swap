@@ -6,12 +6,13 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:52:29 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/20 16:17:58 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:42:22 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	pa_abovemid(int *sorted_list, int howmny, t_node **stk_a, t_node **stk_b)
+void	pa_abovemid(int *sorted_list, int howmny, t_node **stk_a,
+		t_node **stk_b)
 {
 	int	i;
 	int	rotcount;
@@ -32,7 +33,8 @@ void	pa_abovemid(int *sorted_list, int howmny, t_node **stk_a, t_node **stk_b)
 		reverse_rotate(stk_b, "rb", -1);
 }
 
-void	flip_b_base(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
+void	flip_b_base(int *sorted_list, int chunksz, t_node **stk_a,
+		t_node **stk_b)
 {
 	int	i;
 	int	rotcount;

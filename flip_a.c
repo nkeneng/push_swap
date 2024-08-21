@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:22:39 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/07/01 15:22:43 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:05:13 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -23,7 +23,7 @@ void	pb_belowmid(int *sorted_list, int howmny, t_node **stk_a, t_node **stk_b)
 		while ((*stk_a)->data >= sorted_list[0])
 		{
 			rotcount++;
-			rotate(stk_a, "a", 1);
+			rotate(stk_a, "ra", 1);
 		}
 		if ((*stk_a)->data < sorted_list[0])
 			push(stk_b, stk_a, "pb");
@@ -42,7 +42,7 @@ void	flip_a(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
 	if (chunksz <= 2)
 	{
 		if (isunsorted(*stk_a, 2))
-			swap(*stk_a, "a");
+			swap(*stk_a, "sa");
 		return ;
 	}
 	if (!isunsorted(*stk_a, chunksz))

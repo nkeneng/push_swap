@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:59 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/20 16:22:56 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:27:43 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,21 @@ void	push_swap(t_node **a, int *sorted_list)
 void	print_linked_list(t_node *head)
 {
 	t_node	*current;
+	FILE	*file;
 
+	file = fopen("output.txt", "w");
+	if (file == NULL)
+	{
+		printf("Error opening file!\n");
+		return ;
+	}
 	current = head;
 	while (current != NULL)
 	{
-		ft_printf("%d\n", current->data);
+		fprintf(file, "%d\n", current->data);
 		current = current->next;
 	}
+	fclose(file);
 }
 
 int	main(int ac, char **av)
@@ -78,7 +86,6 @@ int	main(int ac, char **av)
 		sorted_list = add_sorting_index(&a, find_len(a));
 		push_swap(&a, sorted_list);
 		print_linked_list(a);
-		ft_printf("OK\n");
 	}
 	return (0);
 }
