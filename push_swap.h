@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:40 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/21 17:27:06 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/08/22 15:03:32 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int					stack_is_sorted(t_node *stack);
 void				free_linked_list(t_node **stack);
 
 void				swap(t_node *stack, char *str);
-void				safe_free(char ***ptr);
 t_node				*ft_lstlast_ps(t_node *lst);
 void				sort_three(t_node **stack);
 void				rotate(t_node **stack, char *str, int cost);
@@ -50,4 +49,8 @@ void				flip_b(int *arr_ind, int chunksz, t_node **stk_a,
 void				flip_a(int *arr_ind, int chunksz, t_node **stk_a,
 						t_node **stk_b);
 int					find_midpt(t_node *stack);
+void				send_to_b(t_node **a, t_node **b, int total_nodes_to_go);
+void				print_linked_list(t_node *head);
+void				push_swap(t_node **a, int *sorted_list);
+int					check_zeros(char *str);
 #endif

@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:52:29 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/21 17:42:22 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/08/21 21:00:31 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -30,7 +30,7 @@ void	pa_abovemid(int *sorted_list, int howmny, t_node **stk_a,
 			push(stk_a, stk_b, "pa");
 	}
 	while (rotcount-- > 0)
-		reverse_rotate(stk_b, "rb", -1);
+		reverse_rotate(stk_b, "rrb", -1);
 }
 
 void	flip_b_base(int *sorted_list, int chunksz, t_node **stk_a,
@@ -52,7 +52,7 @@ void	flip_b_base(int *sorted_list, int chunksz, t_node **stk_a,
 			push(stk_a, stk_b, "pa");
 	}
 	while (rotcount-- > 0)
-		reverse_rotate(stk_b, "rb", 1);
+		reverse_rotate(stk_b, "rrb", 1);
 	if (isunsorted(*stk_a, 2))
 		swap(*stk_a, "sa");
 	return ;

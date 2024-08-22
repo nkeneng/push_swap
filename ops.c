@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:26:49 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/20 16:19:47 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:25:47 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	swap(t_node *stack, char *str)
 	index_temp = stack->s_index;
 	stack->s_index = stack->next->s_index;
 	stack->next->s_index = index_temp;
-	ft_printf(str, 1);
-	ft_printf("\n", 1);
+	ft_printf(str);
+	ft_printf("\n");
 }
 
 void	rotate(t_node **stack, char *str, int cost)
@@ -39,8 +39,8 @@ void	rotate(t_node **stack, char *str, int cost)
 		(*stack) = (*stack)->next;
 		temp->next = NULL;
 		ft_lstlast_ps(*stack)->next = temp;
-		ft_printf(str, 1);
-		ft_printf("\n", 1);
+		ft_printf(str);
+		ft_printf("\n");
 		cost--;
 	}
 }
@@ -62,8 +62,8 @@ void	reverse_rotate(t_node **stack, char *str, int cost)
 		*stack = last;
 		temp->next = NULL;
 		last = temp;
-		ft_printf(str, 1);
-		ft_printf("\n", 1);
+		ft_printf(str);
+		ft_printf("\n");
 		cost++;
 	}
 }
@@ -86,7 +86,7 @@ void	push(t_node **stack_1, t_node **stack_2, char *str)
 	temp->next = *stack_1;
 	*stack_1 = temp;
 	if (ft_strncmp(str, "pa", 2) == 0)
-		write(1, "pa\n", 3);
+		ft_printf("pa\n");
 	else if (ft_strncmp(str, "pb", 2) == 0)
-		write(1, "pb\n", 3);
+		ft_printf("pb\n");
 }
