@@ -33,10 +33,9 @@ int	main(int ac, char **av)
 			}
 			i++;
 		}
-		create_stack(av, &a, ac);
-		sorted_list = add_sorting_index(&a, find_len(a));
+		create_stack_a(av, &a, ac);
+		sorted_list = create_add_indexes(&a, len_of_stack(a));
 		push_swap(&a, sorted_list);
-		print_linked_list(a);
 	}
 	return (0);
 }

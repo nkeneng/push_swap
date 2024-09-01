@@ -11,25 +11,26 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	pa_abovemid(int *sorted_list, int howmny, t_node **stk_a,
+void	push_back_to_a(int mid, int howmny, t_node **stk_a,
 		t_node **stk_b)
 {
 	int	i;
-	int	rotcount;
+	int	reverse_count;
 
-	i = -1;
-	rotcount = 0;
-	while (++i < howmny)
+	i = 0;
+	reverse_count = 0;
+	while (i < howmny)
 	{
-		while ((*stk_b)->data <= sorted_list[0])
+		while ((*stk_b)->data <= mid)
 		{
-			rotcount++;
+			reverse_count++;
 			rotate(stk_b, "rb", 1);
 		}
-		if ((*stk_b)->data > sorted_list[0])
+		if ((*stk_b)->data > mid)
 			push(stk_a, stk_b, "pa");
+		i++;
 	}
-	while (rotcount-- > 0)
+	while (reverse_count-- > 0)
 		reverse_rotate(stk_b, "rrb", -1);
 }
 
@@ -65,7 +66,7 @@ void	flip_b(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
 	int	i;
 
 	mid = chunksz / 2;
-	i = -1;
+	i = 0;
 	if (chunksz % 2 == 0)
 		restsz = chunksz - mid + 1;
 	else
@@ -77,11 +78,14 @@ void	flip_b(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
 	}
 	else if (!isrevunsorted(*stk_b, chunksz))
 	{
-		while (++i < chunksz)
+		while (i < chunksz)
+		{
 			push(stk_a, stk_b, "pa");
+			i++;
+		}
 		return ;
 	}
-	pa_abovemid(&sorted_list[mid], chunksz - mid - 1, stk_a, stk_b);
+	push_back_to_a(sorted_list[mid], chunksz - mid - 1, stk_a, stk_b);
 	flip_a(&sorted_list[mid + 1], chunksz - mid - 1, stk_a, stk_b);
 	flip_b(sorted_list, restsz, stk_a, stk_b);
 }

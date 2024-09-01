@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	find_midpt(t_node *stack)
+/**
+ * midpoint seems to be the sum of all indexes divided by the number of elements
+ */
+int	midpoint_of(t_node *stack)
 {
 	int	i;
 	int	sum;
@@ -36,25 +39,25 @@ void	push_to_b(t_node **a, t_node **b, int *i)
 	(*i)--;
 }
 
-void	send_to_b(t_node **a, t_node **b, int total_nodes_to_go)
+void	send_to_b(t_node **a, t_node **b, int nodes_total)
 {
-	int	mid_pt;
+	int	midpoint;
 	int	i;
 
 	if (*a == NULL)
 		return ;
-	mid_pt = find_midpt(*a);
-	i = (total_nodes_to_go / 2);
+	midpoint = midpoint_of(*a);
+	i = (nodes_total / 2);
 	while (i > 0)
 	{
-		if ((*a)->s_index < mid_pt)
+		if ((*a)->s_index < midpoint)
 			push_to_b(a, b, &i);
-		else if ((*a)->next->s_index < mid_pt)
+		else if ((*a)->next->s_index < midpoint)
 		{
 			rotate(a, "ra", 1);
 			push_to_b(a, b, &i);
 		}
-		else if ((ft_lstlast_ps(*a)->s_index < mid_pt))
+		else if ((ft_lstlast_ps(*a)->s_index < midpoint))
 		{
 			reverse_rotate(a, "rra", -1);
 			push_to_b(a, b, &i);
@@ -69,7 +72,7 @@ void	midpoint_sorting(t_node **a, t_node **b, int *sorted_list)
 {
 	int	size;
 
-	size = find_len(*a);
+	size = len_of_stack(*a);
 	if (size <= 2)
 	{
 		if (!stack_is_sorted(*a))

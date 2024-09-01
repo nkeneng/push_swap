@@ -4,17 +4,14 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRCS = stack.c ops.c sort.c midpoint_algo.c free.c flip_a.c flip_b.c utilities.c change-name.c
-SRC = push_swap.c
-MAIN = test/main.c
-TESTS = $(shell find ./test -name "*test.c")
+SRCS = stack.c ops.c sort.c midpoint_algo.c free.c flip_a.c flip_b.c utilities.c change-name.c push_swap.c
+TEST_SRCS = $(filter-out push_swap.c, $(SRCS))
+TESTS_FILES = $(shell find ./test -name "*test.c")
 
 LIBFT = -Llibft -lft
 
 OBJS = $(SRCS:.c=.o)
-TEST_OBJS = $(TESTS:.c=.o)
-SRC_OBJ = $(SRC:.c=.o)
-MAIN_OBJ = $(MAIN:.c=.o)
+TEST_OBJS = $(TESTS_FILES:.c=.o)
 
 all: submodules libft $(NAME)
 
@@ -38,24 +35,24 @@ libft:
 	$(MAKE) -C libft
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(SRC_OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-test: $(OBJS) $(TEST_OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(TEST_OBJS) $(LIBFT) -lcriterion -o test.out && ./test.out
+test: $(TEST_SRCS:.c=.o) $(TEST_OBJS)
+	$(CC) $(CFLAGS) $(TEST_SRCS:.c=.o) $(TEST_OBJS) $(LIBFT) -lcriterion -o test.out && ./test.out
 
-main: $(OBJS) $(MAIN_OBJ)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MAIN_OBJ) -o main.out 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(TEST_SRCS:.c=.o) $(TEST_OBJS)
 	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f test.out
 	$(MAKE) -C libft fclean
 
 re: fclean all
 
-.PHONY: all clean  fclean re submodules libft
+.PHONY: all clean  fclean re submodules libft test

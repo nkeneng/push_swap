@@ -28,7 +28,7 @@ typedef struct t_list
 	struct t_list	*next;
 }					t_node;
 
-void				create_stack(char **av, t_node **stack, int ac);
+void				create_stack_a(char **av, t_node **stack, int ac);
 int					stack_is_sorted(t_node *stack);
 void				free_linked_list(t_node **stack);
 
@@ -37,18 +37,17 @@ t_node				*ft_lstlast_ps(t_node *lst);
 void				sort_three(t_node **stack);
 void				rotate(t_node **stack, char *str, int cost);
 void				reverse_rotate(t_node **stack, char *str, int cost);
-int					find_len(t_node *pList);
+int					len_of_stack(t_node *pList);
 void				push(t_node **stack_1, t_node **stack_2, char *str);
 void				midpoint_sorting(t_node **a, t_node **b, int *sorted_list);
-int					*add_sorting_index(t_node **stack, int len);
-int					count_divisions(int dividend, int divisor);
+int					*create_add_indexes(t_node **stack, int len);
 int					isrevunsorted(t_node *stk, int chunksz);
 int					isunsorted(t_node *stk, int chunksz);
 void				flip_b(int *arr_ind, int chunksz, t_node **stk_a,
 						t_node **stk_b);
 void				flip_a(int *arr_ind, int chunksz, t_node **stk_a,
 						t_node **stk_b);
-int					find_midpt(t_node *stack);
+int					midpoint_of(t_node *stack);
 void				send_to_b(t_node **a, t_node **b, int total_nodes_to_go);
 void				print_linked_list(t_node *head);
 void				push_swap(t_node **a, int *sorted_list);

@@ -14,27 +14,27 @@
 
 void	sort_three(t_node **stack)
 {
-	int first;
-	int	second;
-	int	third;
+	t_node *a;
+	t_node	*b;
+	t_node	*c;
 
-	first = (*stack)->s_index;
-	second = (*stack)->next->s_index;
-	third = (*stack)->next->next->s_index;
-	if ((first < second) && (second < third))
+	a = *stack;
+	b = a->next;
+	c = b->next;
+	if ((a->s_index < b->s_index) && (b->s_index < c->s_index))
 		return ;
-	else if ((first < second) && (first < third)) // 1 3 2
+	else if ((a->s_index < b->s_index) && (a->s_index < c->s_index)) // 1 3 2
 	{
 		swap(*stack, "sa");     // 3 1 2
 		rotate(stack, "ra", 1); // 1 2 3
 	}
-	else if ((first > second) && (first < third) && (second < third)) // 2 1 3
+	else if ((a->s_index > b->s_index) && (a->s_index < c->s_index) && (b->s_index < c->s_index)) // 2 1 3
 		swap(*stack, "sa");                                           // 1 2 3
-	else if ((first < second) && (first > third))                     // 2 3 1
+	else if ((a->s_index < b->s_index) && (a->s_index > c->s_index))                     // 2 3 1
 		reverse_rotate(stack, "rra", -1);
-	else if ((first > second) && (first > third) && (second < third)) // 3 1 2
+	else if ((a->s_index > b->s_index) && (a->s_index > c->s_index) && (b->s_index < c->s_index)) // 3 1 2
 		rotate(stack, "ra", 1);
-	else if ((first > second) && (first > third) && (second > third)) // 3 2 1
+	else if ((a->s_index > b->s_index) && (a->s_index > c->s_index) && (b->s_index > c->s_index)) // 3 2 1
 	{
 		swap(*stack, "sa"); // 2 3 1
 		reverse_rotate(stack, "rra", -1);
@@ -101,7 +101,7 @@ void	sort_int_array(int **arr, int len)
 	}
 }
 
-int	*add_sorting_index(t_node **stack, int len)
+int	*create_add_indexes(t_node **stack, int len)
 {
 	t_node	*temp;
 	int		i;

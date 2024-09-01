@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	find_len(t_node *pList)
+int	len_of_stack(t_node *pList)
 {
 	int		len;
 	t_node	*temp;
@@ -25,19 +25,6 @@ int	find_len(t_node *pList)
 		temp = temp->next;
 	}
 	return (len);
-}
-
-int	count_divisions(int dividend, int divisor)
-{
-	int	count;
-
-	count = 0;
-	while (dividend >= divisor)
-	{
-		dividend /= divisor;
-		count++;
-	}
-	return (count);
 }
 
 int	isunsorted(t_node *stk, int chunksz)

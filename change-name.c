@@ -32,11 +32,11 @@ void	push_swap(t_node **a, int *sorted_list)
 		free_linked_list(a);
 		exit(0);
 	}
-	else if (find_len(*a) == 2)
+	else if (len_of_stack(*a) == 2)
 		swap(*a, "sa");
-	else if (find_len(*a) == 3)
+	else if (len_of_stack(*a) == 3)
 		sort_three(a);
-	else if (find_len(*a) > 3)
+	else if (len_of_stack(*a) > 3)
 		midpoint_sorting(a, &b, sorted_list);
 	return ;
 }

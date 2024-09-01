@@ -46,7 +46,7 @@ t_node	*ft_lstlast_ps(t_node *lst)
 	return (last);
 }
 
-void	create_stack(char **av, t_node **stack, int ac)
+void	create_stack_a(char **av, t_node **stack, int ac)
 {
 	t_node	*a;
 	long	value;
