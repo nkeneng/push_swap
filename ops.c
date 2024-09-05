@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:26:49 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/22 14:25:47 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/01 10:44:42 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,10 @@ void	push(t_node **stack_1, t_node **stack_2, char *str)
 		ft_printf("pa\n");
 	else if (ft_strncmp(str, "pb", 2) == 0)
 		ft_printf("pb\n");
+}
+
+void	rotate_back(t_node **stk_b, int reverse_count, char *str)
+{
+	while (reverse_count-- > 0)
+		reverse_rotate(stk_b, str, -1);
 }

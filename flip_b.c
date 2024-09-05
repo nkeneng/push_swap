@@ -6,36 +6,42 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:52:29 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/21 21:00:31 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/01 11:58:35 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	push_back_to_a(int mid, int howmny, t_node **stk_a,
-		t_node **stk_b)
+void	push_whole_chunk(t_node **stk_a, t_node **stk_b, int chunksz)
+{
+	int	i;
+
+	i = 0;
+	while (i < chunksz)
+	{
+		push(stk_a, stk_b, "pa");
+		i++;
+	}
+	return ;
+}
+
+void	push_back_to_a(int mid, int size, t_node **stk_a, t_node **stk_b)
 {
 	int	i;
 	int	reverse_count;
 
 	i = 0;
 	reverse_count = 0;
-	while (i < howmny)
+	while (i < size)
 	{
-		while ((*stk_b)->data <= mid)
-		{
-			reverse_count++;
-			rotate(stk_b, "rb", 1);
-		}
+		rotate_while_lower(stk_b, &reverse_count, "rb", mid);
 		if ((*stk_b)->data > mid)
 			push(stk_a, stk_b, "pa");
 		i++;
 	}
-	while (reverse_count-- > 0)
-		reverse_rotate(stk_b, "rrb", -1);
+	rotate_back(stk_b, reverse_count, "rrb");
 }
 
-void	flip_b_base(int *sorted_list, int chunksz, t_node **stk_a,
-		t_node **stk_b)
+void	send_chunk_to_a(int mid, int chunksz, t_node **stk_a, t_node **stk_b)
 {
 	int	i;
 	int	rotcount;
@@ -44,18 +50,12 @@ void	flip_b_base(int *sorted_list, int chunksz, t_node **stk_a,
 	rotcount = 0;
 	while (++i < chunksz)
 	{
-		while ((*stk_b)->data < sorted_list[0])
-		{
-			rotcount++;
-			rotate(stk_b, "rb", 1);
-		}
-		if ((*stk_b)->data >= sorted_list[0])
+		if ((*stk_b)->data >= mid)
 			push(stk_a, stk_b, "pa");
 	}
-	while (rotcount-- > 0)
-		reverse_rotate(stk_b, "rrb", 1);
-	if (isunsorted(*stk_a, 2))
+	if (!is_sorted_ascending(*stk_a, 2))
 		swap(*stk_a, "sa");
+	rotate_back(stk_b, rotcount, "rrb");
 	return ;
 }
 
@@ -63,28 +63,16 @@ void	flip_b(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
 {
 	int	mid;
 	int	restsz;
-	int	i;
 
 	mid = chunksz / 2;
-	i = 0;
 	if (chunksz % 2 == 0)
 		restsz = chunksz - mid + 1;
 	else
 		restsz = chunksz - mid;
 	if (chunksz <= 2)
-	{
-		flip_b_base(sorted_list, chunksz, stk_a, stk_b);
-		return ;
-	}
-	else if (!isrevunsorted(*stk_b, chunksz))
-	{
-		while (i < chunksz)
-		{
-			push(stk_a, stk_b, "pa");
-			i++;
-		}
-		return ;
-	}
+		return (send_chunk_to_a(sorted_list[0], chunksz, stk_a, stk_b));
+	else if (is_sorted_descending(*stk_b, chunksz))
+		return (push_whole_chunk(stk_a, stk_b, chunksz));
 	push_back_to_a(sorted_list[mid], chunksz - mid - 1, stk_a, stk_b);
 	flip_a(&sorted_list[mid + 1], chunksz - mid - 1, stk_a, stk_b);
 	flip_b(sorted_list, restsz, stk_a, stk_b);

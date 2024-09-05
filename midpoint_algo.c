@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:05:56 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/22 15:47:39 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/01 12:02:31 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -33,7 +33,7 @@ int	midpoint_of(t_node *stack)
 		return ((sum / i) + 1);
 }
 
-void	push_to_b(t_node **a, t_node **b, int *i)
+static void	push_to_b_and_decrement(t_node **a, t_node **b, int *i)
 {
 	push(b, a, "pb");
 	(*i)--;
@@ -51,23 +51,23 @@ void	send_to_b(t_node **a, t_node **b, int nodes_total)
 	while (i > 0)
 	{
 		if ((*a)->s_index < midpoint)
-			push_to_b(a, b, &i);
+			push_to_b_and_decrement(a, b, &i);
 		else if ((*a)->next->s_index < midpoint)
 		{
 			rotate(a, "ra", 1);
-			push_to_b(a, b, &i);
+			push_to_b_and_decrement(a, b, &i);
 		}
 		else if ((ft_lstlast_ps(*a)->s_index < midpoint))
 		{
 			reverse_rotate(a, "rra", -1);
-			push_to_b(a, b, &i);
+			push_to_b_and_decrement(a, b, &i);
 		}
 		else
 			rotate(a, "ra", 1);
 	}
 }
 
-// TODO: make it more readable 14 lines below 
+// TODO: make it more readable 14 lines below
 void	midpoint_sorting(t_node **a, t_node **b, int *sorted_list)
 {
 	int	size;
