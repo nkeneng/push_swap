@@ -3,39 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: stevennkeneng <snkeneng@student.42ber      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 11:45:59 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/01 12:03:53 by stevennke        ###   ########.fr       */
+/*   Created: 2024/08/22 15:02:28 by stevennke         #+#    #+#             */
+/*   Updated: 2024/09/05 17:19:28 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
 
-int	main(int ac, char **av)
+int	check_zeros(char *str)
 {
-	int		i;
-	int		is_zeros;
-	t_node	*a;
-	int		*sorted_list;
+	unsigned int	i;
 
-	i = 1;
-	a = NULL;
-	if (ac >= 2)
-	{
-		while (av[i])
-		{
-			is_zeros = check_zeros(av[i]);
-			if (!is_zeros && ft_atoi(av[i]) == 0)
-			{
-				ft_printf("Error\n");
-				return (0);
-			}
-			i++;
-		}
-		create_stack_a(av, &a, ac);
-		sorted_list = create_add_indexes(&a, len_of_stack(a));
-		push_swap(&a, sorted_list);
-	}
+	i = ft_strlen(str);
+	if (!ft_isempty(str) && ft_strncmp(str, "0", i) == 0)
+		return (1);
 	return (0);
+}
+
+void	push_swap(t_node **a, int *sorted_list)
+{
+	t_node	*b;
+
+	b = NULL;
+	if (stack_is_sorted(*a))
+	{
+		free_linked_list(a);
+		exit(0);
+	}
+	else if (len_of_stack(*a) == 2)
+		swap(*a, "sa");
+	else if (len_of_stack(*a) == 3)
+		sort_three(a);
+	else if (len_of_stack(*a) > 3)
+		midpoint_sorting(a, &b, sorted_list);
+	return ;
+}
+
+void	print_linked_list(t_node *head)
+{
+	t_node	*current;
+	FILE	*file;
+
+	file = fopen("output.txt", "w");
+	if (file == NULL)
+	{
+		ft_printf("Error opening file!\n");
+		return ;
+	}
+	current = head;
+	while (current != NULL)
+	{
+		ft_printf("%d", current->data);
+		current = current->next;
+	}
+	fclose(file);
 }

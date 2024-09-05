@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 16:16:09 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/22 11:51:50 by stevennke        ###   ########.fr       */
+/*   Created: 2024/06/06 11:45:59 by snkeneng          #+#    #+#             */
+/*   Updated: 2024/09/01 12:03:53 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_linked_list(t_node **stack)
+int	main(int ac, char **av)
 {
-	t_node	*temp;
+	int		i;
+	int		is_zeros;
+	t_node	*a;
+	int		*sorted_list;
 
-	while (*stack)
+	i = 1;
+	a = NULL;
+	if (ac >= 2)
 	{
-		temp = *stack;
-		*stack = (*stack)->next;
-		free(temp);
+		while (av[i])
+		{
+			is_zeros = check_zeros(av[i]);
+			if (!is_zeros && ft_atoi(av[i]) == 0)
+			{
+				ft_printf("Error\n");
+				return (0);
+			}
+			i++;
+		}
+		create_stack_a(av, &a, ac);
+		sorted_list = create_add_indexes(&a, len_of_stack(a));
+		push_swap(&a, sorted_list);
 	}
+	return (0);
 }

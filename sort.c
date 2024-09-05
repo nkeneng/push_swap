@@ -6,53 +6,47 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:03:01 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/08/21 15:37:55 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/05 17:47:34 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_node **stack)
+static void	sort(t_node **stack, t_node *b, t_node *c)
 {
-	t_node *a;
-	t_node	*b;
-	t_node	*c;
-
-	a = *stack;
-	b = a->next;
-	c = b->next;
-	if ((a->s_index < b->s_index) && (b->s_index < c->s_index))
+	if (((*stack)->s_index < b->s_index) && (b->s_index < c->s_index))
 		return ;
-	else if ((a->s_index < b->s_index) && (a->s_index < c->s_index)) // 1 3 2
+	else if (((*stack)->s_index < b->s_index)
+		&& ((*stack)->s_index < c->s_index))
 	{
-		swap(*stack, "sa");     // 3 1 2
-		rotate(stack, "ra", 1); // 1 2 3
-	}
-	else if ((a->s_index > b->s_index) && (a->s_index < c->s_index) && (b->s_index < c->s_index)) // 2 1 3
-		swap(*stack, "sa");                                           // 1 2 3
-	else if ((a->s_index < b->s_index) && (a->s_index > c->s_index))                     // 2 3 1
-		reverse_rotate(stack, "rra", -1);
-	else if ((a->s_index > b->s_index) && (a->s_index > c->s_index) && (b->s_index < c->s_index)) // 3 1 2
+		swap(*stack, "sa");
 		rotate(stack, "ra", 1);
-	else if ((a->s_index > b->s_index) && (a->s_index > c->s_index) && (b->s_index > c->s_index)) // 3 2 1
+	}
+	else if (((*stack)->s_index > b->s_index)
+		&& ((*stack)->s_index < c->s_index) && (b->s_index < c->s_index))
+		swap(*stack, "sa");
+	else if (((*stack)->s_index < b->s_index)
+		&& ((*stack)->s_index > c->s_index))
+		reverse_rotate(stack, "rra", -1);
+	else if (((*stack)->s_index > b->s_index)
+		&& ((*stack)->s_index > c->s_index) && (b->s_index < c->s_index))
+		rotate(stack, "ra", 1);
+	else if (((*stack)->s_index > b->s_index)
+		&& ((*stack)->s_index > c->s_index) && (b->s_index > c->s_index))
 	{
-		swap(*stack, "sa"); // 2 3 1
+		swap(*stack, "sa");
 		reverse_rotate(stack, "rra", -1);
 	}
 }
 
-int	stack_is_sorted(t_node *stack)
+void	sort_three(t_node **stack)
 {
-	t_node	*temp;
+	t_node	*b;
+	t_node	*c;
 
-	temp = stack;
-	while (temp->next)
-	{
-		if (temp->data > temp->next->data)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
+	b = (*stack)->next;
+	c = b->next;
+	sort(stack, b, c);
 }
 
 void	assign_index(int len, t_node **stack, int *sorted_list)

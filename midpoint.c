@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 13:05:56 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/01 12:02:31 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/05 17:21:02 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -67,7 +67,6 @@ void	send_to_b(t_node **a, t_node **b, int nodes_total)
 	}
 }
 
-// TODO: make it more readable 14 lines below
 void	midpoint_sorting(t_node **a, t_node **b, int *sorted_list)
 {
 	int	size;
@@ -81,5 +80,5 @@ void	midpoint_sorting(t_node **a, t_node **b, int *sorted_list)
 	}
 	send_to_b(a, b, size);
 	midpoint_sorting(a, b, &sorted_list[size / 2]);
-	flip_b(sorted_list, size / 2, a, b);
+	from_b_to_a(sorted_list, size / 2, a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:40 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/01 11:23:48 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/05 17:17:22 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int					len_of_stack(t_node *pList);
 void				push(t_node **stack_1, t_node **stack_2, char *str);
 void				midpoint_sorting(t_node **a, t_node **b, int *sorted_list);
 int					*create_add_indexes(t_node **stack, int len);
-void				flip_b(int *arr_ind, int chunksz, t_node **stk_a,
+void				from_b_to_a(int *arr_ind, int chunksz, t_node **stk_a,
 						t_node **stk_b);
-void				flip_a(int *arr_ind, int chunksz, t_node **stk_a,
+void				from_a_to_b(int *arr_ind, int chunksz, t_node **stk_a,
 						t_node **stk_b);
 int					midpoint_of(t_node *stack);
 void				send_to_b(t_node **a, t_node **b, int total_nodes_to_go);

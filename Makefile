@@ -4,9 +4,9 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRCS = stack.c ops.c sort.c midpoint_algo.c free.c flip_a.c flip_b.c utilities.c change-name.c push_swap.c
-TEST_SRCS = $(filter-out push_swap.c, $(SRCS))
-TESTS_FILES = $(shell find ./test -name "*test.c")
+SRCS = stack.c ops.c sort.c midpoint.c sorting_utilities.c stack_a.c stack_b.c utilities.c push_swap.c main.c
+TEST_SRCS = $(filter-out main.c, $(SRCS))
+TESTS_FILES = $(shell find ./test -name "*_test.c")
 
 LIBFT = -Llibft -lft
 
@@ -14,9 +14,6 @@ OBJS = $(SRCS:.c=.o)
 TEST_OBJS = $(TESTS_FILES:.c=.o)
 
 all: submodules libft $(NAME)
-
-check-sort:
-	cc test/main_count.c -o check.out && ./check.out
 
 run: all
 	./$(NAME) 2 3 5 12 10 6 9 7 4 1 8 11
@@ -55,4 +52,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean  fclean re submodules libft test
+.PHONY: all clean fclean re submodules libft test

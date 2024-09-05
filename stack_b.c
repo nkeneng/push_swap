@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:52:29 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/01 11:58:35 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/05 17:21:45 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -59,7 +59,8 @@ void	send_chunk_to_a(int mid, int chunksz, t_node **stk_a, t_node **stk_b)
 	return ;
 }
 
-void	flip_b(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
+void	from_b_to_a(int *sorted_list, int chunksz, t_node **stk_a,
+		t_node **stk_b)
 {
 	int	mid;
 	int	restsz;
@@ -74,6 +75,6 @@ void	flip_b(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
 	else if (is_sorted_descending(*stk_b, chunksz))
 		return (push_whole_chunk(stk_a, stk_b, chunksz));
 	push_back_to_a(sorted_list[mid], chunksz - mid - 1, stk_a, stk_b);
-	flip_a(&sorted_list[mid + 1], chunksz - mid - 1, stk_a, stk_b);
-	flip_b(sorted_list, restsz, stk_a, stk_b);
+	from_a_to_b(&sorted_list[mid + 1], chunksz - mid - 1, stk_a, stk_b);
+	from_b_to_a(sorted_list, restsz, stk_a, stk_b);
 }

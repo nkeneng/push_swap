@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flip_a.c                                           :+:      :+:    :+:   */
+/*   stack_a.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:22:39 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/01 11:59:58 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/05 17:11:01 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -28,7 +28,8 @@ static void	push_to_b(int mid, int size, t_node **stk_a, t_node **stk_b)
 	rotate_back(stk_a, rotcount, "rra");
 }
 
-void	flip_a(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
+void	from_a_to_b(int *sorted_list, int chunksz, t_node **stk_a,
+		t_node **stk_b)
 {
 	int	mid;
 	int	restsz;
@@ -44,6 +45,6 @@ void	flip_a(int *sorted_list, int chunksz, t_node **stk_a, t_node **stk_b)
 	if (is_sorted_ascending(*stk_a, chunksz))
 		return ;
 	push_to_b(sorted_list[mid], mid, stk_a, stk_b);
-	flip_a(&sorted_list[mid], restsz, stk_a, stk_b);
-	flip_b(sorted_list, mid, stk_a, stk_b);
+	from_a_to_b(&sorted_list[mid], restsz, stk_a, stk_b);
+	from_b_to_a(sorted_list, mid, stk_a, stk_b);
 }
