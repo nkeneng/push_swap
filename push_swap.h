@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:40 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/05 17:17:22 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/09 17:47:57 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ typedef struct t_list
 {
 	int				data;
 	int				s_index;
-	int				cost_a;
-	int				cost_b;
-	int				pos;
 	struct t_list	*next;
 }					t_node;
 
