@@ -46,14 +46,14 @@ t_node	*ft_lstlast_ps(t_node *lst)
 	return (last);
 }
 
-void	create_stack_a(char **av, t_node **stack, int ac)
+void	create_stack_a(char **av, t_node **stack, int ac, int first_index)
 {
 	t_node	*a;
 	long	value;
 	int		i;
 
 	i = ac - 1;
-	while (i >= 1)
+	while (i >= first_index)
 	{
 		value = ft_atoi(av[i]);
 		a = malloc(sizeof(t_node));

@@ -28,7 +28,8 @@ typedef struct t_list
 	struct t_list	*next;
 }					t_node;
 
-void				create_stack_a(char **av, t_node **stack, int ac);
+void				create_stack_a(char **av, t_node **stack, int ac,
+						int first_index);
 int					stack_is_sorted(t_node *stack);
 void				free_linked_list(t_node **stack);
 
