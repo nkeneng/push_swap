@@ -4,7 +4,17 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRCS = stack.c ops.c sort.c midpoint.c sorting_utilities.c stack_a.c stack_b.c utilities.c push_swap.c main.c
+SRCS = includes/stack.c \
+	   includes/ops.c \
+	   includes/sort.c \
+	   includes/midpoint.c \
+	   includes/sorting_utilities.c \
+	   includes/stack_a.c \
+	   includes/stack_b.c \
+	   includes/utilities.c \
+	   includes/push_swap.c \
+	   main.c
+
 TEST_SRCS = $(filter-out main.c, $(SRCS))
 TESTS_FILES = $(shell find ./test -name "*_test.c")
 
@@ -18,6 +28,9 @@ all: submodules libft $(NAME)
 run: all
 	./$(NAME) 2 3 5 12 10 6 9 7 4 1 8 11
 
+valgrind: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) 2 3 5 12 10 6 9 7 4 1 8 11
+	
 submodules:
 	if [ -z "$(shell ls -A libft)" ]; then \
 		echo "libft submodule not initialized, initializing..."; \

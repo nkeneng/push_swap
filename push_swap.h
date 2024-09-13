@@ -18,11 +18,11 @@
 # include "libft/lib_ft/libft.h"
 # include <stdio.h>
 
-typedef struct t_list
+typedef struct t_node
 {
 	int				data;
 	int				s_index;
-	struct t_list	*next;
+	struct t_node	*next;
 }					t_node;
 
 void				create_stack_a(char **av, t_node **stack, int ac,

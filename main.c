@@ -93,5 +93,6 @@ int	main(int ac, char **av)
 	sorted_list = create_add_indexes(&a, len_of_stack(a));
 	push_swap(&a, sorted_list);
 	free_linked_list(&a);
+	free(sorted_list);
 	return (0);
 }

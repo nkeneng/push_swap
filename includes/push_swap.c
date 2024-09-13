@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft/ft_printf/ft_printf.h"
+#include "../push_swap.h"
 
 int	check_zeros(char *str)
 {

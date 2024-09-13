@@ -9,7 +9,7 @@
 /*   Updated: 2024/09/05 17:21:45 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	push_whole_chunk(t_node **stk_a, t_node **stk_b, int chunksz)
 {

@@ -9,7 +9,7 @@
 /*   Updated: 2024/09/05 17:21:02 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /**
  * midpoint seems to be the sum of all indexes divided by the number of elements

@@ -9,7 +9,7 @@
 /*   Updated: 2024/09/05 17:11:01 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	push_to_b(int mid, int size, t_node **stk_a, t_node **stk_b)
 {
