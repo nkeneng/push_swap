@@ -76,6 +76,7 @@ void	handle_args(int ac, char **av, t_node **a)
 		if (res == -1)
 			throw_and_exit(args);
 		create_stack_a(args, a, ft_strslen(args), 0);
+		free_args(args);
 	}
 	else
 	{
@@ -84,20 +85,20 @@ void	handle_args(int ac, char **av, t_node **a)
 			throw_and_exit(NULL);
 		create_stack_a(av, a, ac, 1);
 	}
-	free_args(args);
 }
 
 int	main(int ac, char **av)
 {
 	t_node	*a;
 	int		*sorted_list;
+	int		res;
 
 	a = NULL;
 	if (ac < 2)
 		throw_and_exit(NULL);
 	handle_args(ac, av, &a);
 	sorted_list = create_add_indexes(&a, len_of_stack(a));
-	push_swap(&a, sorted_list);
+	res = push_swap(&a, sorted_list);
 	free_linked_list(&a);
 	free(sorted_list);
 	return (0);

@@ -46,7 +46,7 @@ void				from_a_to_b(int *arr_ind, int chunksz, t_node **stk_a,
 int					midpoint_of(t_node *stack);
 void				send_to_b(t_node **a, t_node **b, int total_nodes_to_go);
 void				print_linked_list(t_node *head);
-void				push_swap(t_node **a, int *sorted_list);
+int					push_swap(t_node **a, int *sorted_list);
 int					check_zeros(char *str);
 void				rotate_back(t_node **stk_b, int reverse_count, char *str);
 void				rotate_while_lower(t_node **stk, int *rotcount, char *move,

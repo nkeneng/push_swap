@@ -22,23 +22,20 @@ int	check_zeros(char *str)
 	return (0);
 }
 
-void	push_swap(t_node **a, int *sorted_list)
+int	push_swap(t_node **a, int *sorted_list)
 {
 	t_node	*b;
 
 	b = NULL;
 	if (stack_is_sorted(*a))
-	{
-		free_linked_list(a);
-		exit(0);
-	}
+		return (-1);
 	else if (len_of_stack(*a) == 2)
 		swap(*a, "sa");
 	else if (len_of_stack(*a) == 3)
 		sort_three(a);
 	else if (len_of_stack(*a) > 3)
 		midpoint_sorting(a, &b, sorted_list);
-	return ;
+	return (1);
 }
 
 void	print_linked_list(t_node *head)
