@@ -6,13 +6,11 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:59 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/09 17:40:47 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/27 16:39:50 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/lib_ft/libft.h"
-#include "push_swap.h"
-#include <stdio.h>
+#include "../push_swap.h"
 
 static void	throw_and_exit(void)
 {

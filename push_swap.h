@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:40 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/09 17:47:57 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/27 16:42:12 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include "libft/lib_ft/libft.h"
 # include <stdio.h>
 
-typedef struct t_node
+typedef struct s_node
 {
 	int				data;
 	int				s_index;
-	struct t_node	*next;
+	struct s_node	*next;
 }					t_node;
 
 void				create_stack_a(char **av, t_node **stack, int ac,
