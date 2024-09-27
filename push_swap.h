@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 11:45:40 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/27 16:42:12 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/27 17:01:01 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ void				rotate_while_greater(t_node **stk, int *rotcount,
 						char *move, int mid);
 int					is_sorted_descending(t_node *stk, int chunksz);
 int					is_sorted_ascending(t_node *stk, int chunksz);
+void				free_args(char **av);
 #endif

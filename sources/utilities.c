@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:18:18 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/05 17:48:38 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/27 17:13:33 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,17 @@ void	free_linked_list(t_node **stack)
 		*stack = (*stack)->next;
 		free(temp);
 	}
+}
+
+void	free_args(char **av)
+{
+	int	i;
+
+	i = 0;
+	while (av && av[i])
+	{
+		free(av[i]);
+		i++;
+	}
+	free(av);
 }
